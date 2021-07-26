@@ -1,0 +1,132 @@
+[
+    {
+        "id": "b5f028ae062d61ea",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a5b30d0e2e4d4c33",
+        "type": "NGSI-QuantumLeap",
+        "z": "b5f028ae062d61ea",
+        "name": "Test",
+        "endpoint": "fcd0a063.b4947",
+        "protocol": "LD",
+        "ldContext": "http://172.14.1.10:3000/data-models/ngsi-context.jsonld",
+        "entityType": "urn:ngsi-ld:Device:filling001",
+        "attrs": "filling",
+        "q": "limit=3",
+        "mode": "keyValues",
+        "x": 540,
+        "y": 280,
+        "wires": [
+            [
+                "91d0cb70edf3e79f"
+            ]
+        ]
+    },
+    {
+        "id": "e9b9a6d953c4a8af",
+        "type": "catch",
+        "z": "b5f028ae062d61ea",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 400,
+        "y": 120,
+        "wires": [
+            [
+                "79d744b075459e01"
+            ]
+        ]
+    },
+    {
+        "id": "79d744b075459e01",
+        "type": "function",
+        "z": "b5f028ae062d61ea",
+        "name": "",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 570,
+        "y": 120,
+        "wires": [
+            [
+                "c1c9283df2915d33"
+            ]
+        ]
+    },
+    {
+        "id": "c1c9283df2915d33",
+        "type": "debug",
+        "z": "b5f028ae062d61ea",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "91d0cb70edf3e79f",
+        "type": "debug",
+        "z": "b5f028ae062d61ea",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f6a9a9ac1fecbbc3",
+        "type": "inject",
+        "z": "b5f028ae062d61ea",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "urn:ngsi-ld:Device:filling001",
+        "payloadType": "str",
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "a5b30d0e2e4d4c33"
+            ]
+        ]
+    },
+    {
+        "id": "fcd0a063.b4947",
+        "type": "Context-Broker",
+        "name": "Varcities",
+        "endpoint": "http://172.18.1.9:8668",
+        "service": "openiot",
+        "servicepath": "/",
+        "idmEndpoint": ""
+    }
+]
