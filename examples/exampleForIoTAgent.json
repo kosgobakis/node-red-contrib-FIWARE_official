@@ -1,0 +1,85 @@
+[
+    {
+        "id": "4db1cde19f8bcb10",
+        "type": "NGSI-Entity",
+        "z": "fc9fe080ac9233f3",
+        "name": "Device",
+        "endpoint": "4877c0e8d32a2ea2",
+        "protocol": "LD",
+        "ldContext": "https://uri.etsi.org/ngsi-ld/v1/ngsi-ld-core-context.jsonld",
+        "mode": "normalized",
+        "mimeType": "application/ld+json",
+        "attrs": "",
+        "x": 590,
+        "y": 200,
+        "wires": [
+            [
+                "6460a5a02cd4b8f2"
+            ]
+        ]
+    },
+    {
+        "id": "e161ebc0f43bb904",
+        "type": "inject",
+        "z": "fc9fe080ac9233f3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "urn:ngsi-ld:Device:water001",
+        "payloadType": "str",
+        "x": 450,
+        "y": 200,
+        "wires": [
+            [
+                "4db1cde19f8bcb10"
+            ]
+        ]
+    },
+    {
+        "id": "6460a5a02cd4b8f2",
+        "type": "debug",
+        "z": "fc9fe080ac9233f3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "9354edf822da5411",
+        "type": "comment",
+        "z": "fc9fe080ac9233f3",
+        "name": "Example for tutorials.IoT-Agent",
+        "info": "[https://github.com/FIWARE/tutorials.IoT-Agent/tree/NGSI-LD]()\n\n\ncurl -L -X GET 'http://localhost:1026/ngsi-ld/v1/entities/urn:ngsi-ld:Device:water001' \\\n-H 'Fiware-Service: openiot' \\\n-H 'Fiware-ServicePath: /' \nH 'Link: <http://context/ngsi-context.jsonld>; rel=\"http://www.w3.org/ns/json-ld#context\"; type=\"application/ld+json\"' \\\n-H 'Accept: application/json'\n",
+        "x": 700,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "4877c0e8d32a2ea2",
+        "type": "Context-Broker",
+        "name": "IoT-Agen",
+        "endpoint": "http://localhost:1026",
+        "service": "openiot",
+        "servicepath": "/",
+        "idmEndpoint": ""
+    }
+]
