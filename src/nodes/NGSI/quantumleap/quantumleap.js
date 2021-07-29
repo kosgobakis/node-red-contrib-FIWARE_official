@@ -27,9 +27,11 @@ function validate(config, payload) {
 }
 
 function buildParameters(config, payload) {
-  let out = '';
+  let out = 'v2/';
 
-   out=out.concat(`${common.getParam('entityType', config, payload)}`);
+  out=out.concat(`${common.getParam('queryType', config, payload)}`);
+  out=out.concat(`/`);
+  out=out.concat(`${common.getParam('entityType', config, payload)}`);
   const attrs = common.getParam('attrs', config, payload);
   if (attrs) {
     out=out.concat(`/attrs/${attrs}`);
@@ -61,7 +63,7 @@ module.exports = function(RED) {
       let response = null;
       try {
         response = await http.get(
-          `${endpoint}/v2/entities/${parameters}`,
+          `${endpoint}/${parameters}`,
           await common.buildQueryHeaders(config, endpointConfig)
         );
       } catch (e) {
